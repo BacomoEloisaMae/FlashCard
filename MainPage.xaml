@@ -1,0 +1,103 @@
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FlashCard.MainPage"
+             BackgroundColor="navy">
+
+    <Grid>
+        <!--Background Image-->
+        <Image Source="bg.jpg" 
+               Aspect="AspectFill"/>
+        <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+            <!--Title-->
+            <Label Text="Flash Cards"
+                   HorizontalOptions="Center"
+                   FontSize="30"
+                   FontAttributes="Bold"
+                   TextColor="white"/>
+            
+            <!--Flash Card Container-->
+            <Border x:Name="CardBorder"
+                    StrokeThickness="2"
+                    Stroke="#f3ebd4"
+                    StrokeShape="RoundRectangle 10"
+                    BackgroundColor="Black"
+                    HeightRequest="500"
+                    WidthRequest="350">
+				
+				<!--Tap gesture for flipping the card-->
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnFlipAnimation"/>
+                </Border.GestureRecognizers>
+
+                <!--Use a Grid for layout-->
+                <Grid RowDefinitions="Auto,*,Auto" ColumnDefinitions="*">
+                    <!--Centered Flash Cards Label at the top-->
+                    <Label Text="{Binding TopLabel}"
+                           FontSize="30"
+                           FontAttributes="Bold"
+                           TextColor="White"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Start"
+                           Margin="0,10,0,0"/>
+                    <!--Image in the middle-->
+                    <Image Grid.Row="1"
+                           Source="{Binding DisplayImage}"
+                           HeightRequest="300"
+                           WidthRequest="300"
+                           Aspect="AspectFit"
+                           HorizontalOptions="Center"
+                           IsVisible="{Binding HasImage}" />
+
+                    <!--Question/Answer Text at bottom-->
+                    <Border Grid.Row="2"
+                            StrokeThickness="2"
+                            Stroke="#f3ebd4"
+                            BackgroundColor="#f3ebd4"
+                            HeightRequest="150"
+                            WidthRequest="350"
+                            HorizontalOptions="Center"
+                            VerticalOptions="End">
+                        <Label Text="{Binding DisplayText}"
+                               HorizontalOptions="Center"
+                               HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center"
+                               FontSize="24"
+                               Padding="20"
+                               TextColor="Black"
+                               VerticalOptions="Center"/>
+                    </Border>
+                </Grid>
+            </Border>
+
+            <!--Buttons-->
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="20">
+				<!--Previous Button-->
+				<Button Text="&#xe801;"
+                        Command="{Binding BackCommand}"
+                        FontFamily="fontello"
+                        FontSize="18"
+                        BackgroundColor="#E0E0E0"
+                        WidthRequest="100"
+                        CornerRadius="10"/>
+				<!--Shuffle Button-->
+                <Button Text="&#xe802;"
+                        Command="{Binding ShuffleCommand}"
+                        FontFamily="fontello"
+                        FontSize="18"
+                        BackgroundColor="#E0E0E0"
+                        WidthRequest="100"
+                        CornerRadius="10"/>
+				<!--Next Button-->
+				<Button Text="&#xe800;"
+                        Command="{Binding NextCommand}"
+                        FontFamily="fontello"
+                        FontSize="18"
+                        BackgroundColor="#E0E0E0"
+                        WidthRequest="100"
+                        CornerRadius="10"/>
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+    </Grid>
+</ContentPage>
