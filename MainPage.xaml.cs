@@ -144,7 +144,7 @@ namespace FlashCard
         }
         //For INotifyPropertyChanged to notify UI about data updates
         public event PropertyChangedEventHandler PropertyChanged;
-
+         
         //Helper method to raise PropertyChanged events
         protected void OnPropertyChanged([CallerMemberName] string name = null)
             => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));

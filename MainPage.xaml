@@ -29,7 +29,6 @@
                 <Border.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnFlipAnimation"/>
                 </Border.GestureRecognizers>
-
                 <!--Use a Grid for layout-->
                 <Grid RowDefinitions="Auto,*,Auto" ColumnDefinitions="*">
                     <!--Centered Flash Cards Label at the top-->
@@ -47,8 +46,7 @@
                            WidthRequest="300"
                            Aspect="AspectFit"
                            HorizontalOptions="Center"
-                           IsVisible="{Binding HasImage}" />
-
+                           IsVisible="{Binding HasImage}"/>
                     <!--Question/Answer Text at bottom-->
                     <Border Grid.Row="2"
                             StrokeThickness="2"
